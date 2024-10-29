@@ -1,4 +1,4 @@
-package domain.constanst;
+package domain.constant;
 
 public class MetodoPago {
 

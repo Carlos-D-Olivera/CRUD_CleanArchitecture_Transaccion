@@ -1,12 +1,12 @@
 package domain.model;
 
-import domain.constanst.MetodoPago;
+import domain.constant.MetodoPago;
 
 import java.time.LocalDateTime;
 
 public class TransaccionModel {
 
-    private String codigo;
+    private Integer codigo;
 
     private String password;
 
@@ -28,7 +28,7 @@ public class TransaccionModel {
 
     public TransaccionModel() {}
 
-    public TransaccionModel(String codigo, String password, String email, String idFactura, Double monto, LocalDateTime fechaTransaccion, MetodoPago metodopago, int estado, int idCliente, String descripcion){
+    public TransaccionModel(Integer codigo, String password, String email, String idFactura, Double monto, LocalDateTime fechaTransaccion, MetodoPago metodopago, int estado, int idCliente, String descripcion){
         this.codigo = codigo;
         this.password = password;
         this.email = email;
@@ -41,11 +41,11 @@ public class TransaccionModel {
         this.descripcion = descripcion;
     }
 
-    public String getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
