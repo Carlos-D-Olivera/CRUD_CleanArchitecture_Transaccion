@@ -1,11 +1,16 @@
-package domain.model;
+package infraestructure.database.entities;
 
-import domain.constant.MetodoPago;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-public class TransaccionModel {
+@Entity
+@Table(name = "transaccion")
+public class TransaccionEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
     private String password;
@@ -16,7 +21,7 @@ public class TransaccionModel {
 
     private Double monto;
 
-    private LocalDateTime fechaTransaccion;
+    private String fechaTransaccion;
 
     private String metodopago;
 
@@ -26,9 +31,10 @@ public class TransaccionModel {
 
     private String descripcion;
 
-    public TransaccionModel() {}
+    public TransaccionEntity() {
+    }
 
-    public TransaccionModel(Integer codigo, String password, String email, String idFactura, Double monto, LocalDateTime fechaTransaccion, String metodopago, int estado, int idCliente, String descripcion){
+    public TransaccionEntity(Integer codigo, String password, String email, String idFactura, Double monto, String fechaTransaccion, String metodopago, int estado, int idCliente, String descripcion) {
         this.codigo = codigo;
         this.password = password;
         this.email = email;
@@ -81,11 +87,11 @@ public class TransaccionModel {
         this.monto = monto;
     }
 
-    public LocalDateTime getFechaTransaccion() {
+    public String getFechaTransaccion() {
         return fechaTransaccion;
     }
 
-    public void setFechaTransaccion(LocalDateTime fechaTransaccion) {
+    public void setFechaTransaccion(String fechaTransaccion) {
         this.fechaTransaccion = fechaTransaccion;
     }
 
