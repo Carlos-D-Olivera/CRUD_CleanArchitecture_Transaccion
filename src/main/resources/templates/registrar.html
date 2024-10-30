@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Transacción</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Registrar Nueva Transacción</h2>
+  <form th:action="@{/transaccion/guardar}" th:object="${transaccion}" method="post">
+
+    <div class="form-group">
+      <label for="codigo">Código</label>
+      <input th:value="${transaccion.codigo}" disabled="true" type="number" class="form-control" id="codigo" name="codigo" required>
+      <input th:field="${transaccion.codigo}" type="hidden">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input th:field="${transaccion.password}" type="password" class="form-control" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input th:field="${transaccion.email}" type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="idFactura">ID Factura</label>
+      <input th:field="${transaccion.idFactura}" type="text" class="form-control" id="idFactura" name="idFactura" required>
+    </div>
+
+    <div class="form-group">
+      <label for="monto">Monto</label>
+      <input th:field="${transaccion.monto}" type="number" step="0.01" class="form-control" id="monto" name="monto" required>
+    </div>
+
+
+    <div class="form-group">
+      <label for="metodopago">Método de Pago</label>
+      <input th:field="${transaccion.metodopago}" type="text" class="form-control" id="metodopago" name="metodopago" required>
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado</label>
+      <input th:field="${transaccion.estado}" type="number" class="form-control" id="estado" name="estado" required>
+    </div>
+
+    <div class="form-group">
+      <label for="idCliente">ID Cliente</label>
+      <input th:field="${transaccion.idCliente}" type="number" class="form-control" id="idCliente" name="idCliente" required>
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea th:field="${transaccion.descripcion}" class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar Transacción</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

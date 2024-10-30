@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Transacciones</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Lista de Transacciones</h2>
+
+    <!-- Mensaje de validación -->
+    <div th:if="${mensaje}" class="alert alert-info" role="alert">
+        <p th:text="${mensaje}"></p>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Email</th>
+            <th>ID Factura</th>
+            <th>Monto</th>
+            <th>Fecha de Transacción</th>
+            <th>Método de Pago</th>
+            <th>Estado</th>
+            <th>ID Cliente</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="transaccion : ${transacciones}">
+            <td th:text="${transaccion.codigo}"></td>
+            <td th:text="${transaccion.email}"></td>
+            <td th:text="${transaccion.idFactura}"></td>
+            <td th:text="${transaccion.monto}"></td>
+            <td th:text="${transaccion.fechaTransaccion}"></td>
+            <td th:text="${transaccion.metodopago}"></td>
+            <td th:text="${transaccion.estado}"></td>
+            <td th:text="${transaccion.idCliente}"></td>
+            <td th:text="${transaccion.descripcion}"></td>
+            <td>
+                <a th:href="@{/transaccion/editar/{id}(id=${transaccion.codigo})}" class="btn btn-warning">Editar</a>
+                <form th:action="@{/transaccion/eliminar/{id}(id=${transaccion.codigo})}" method="post"     >
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta transacción?');">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/transaccion/registrar" class="btn btn-primary">Nueva Transacción</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
